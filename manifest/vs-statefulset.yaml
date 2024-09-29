@@ -51,7 +51,7 @@ spec:
           mountPath: /database
         - name: vs-config
           configMap:
-            name: vs-config
+            name: vs-filebrowser-config
             items:
             - key: filebrowser.json
           mountPath: /config/settings.json
