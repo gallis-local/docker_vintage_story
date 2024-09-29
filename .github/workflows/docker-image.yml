@@ -35,7 +35,7 @@ jobs:
         context: .
         platforms: linux/amd64
         push: true
-        tags: ${{ secrets.DOCKER_REPOSITORY }}/${{ secrets.DOCKER_LIBRARY }}/${{ secrets.IMAGE_NAME }}:latest
+        tags: ${{ secrets.DOCKER_REPOSITORY }}/${{ secrets.DOCKER_LIBRARY }}/${{ vars.IMAGE_NAME }}:latest
        
     - uses: 8398a7/action-slack@v3
       name: Slack Notification
@@ -45,10 +45,3 @@ jobs:
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
       if: always() # Pick up events even if the job fails or is canceled.
-
-    - name: loki-action
-      uses: metrico/loki-action@V3.1
-      if: always()
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        endpoint: http://grafana-agent-flow.grafana-agent.svc.west.local:9999
