@@ -61,6 +61,7 @@ spec:
           mountPath: /database
         - name: vs-filebrowser-config
           mountPath: /config/settings.json
+          subPath: filebrowser.json
       volumes:
       - name: vs-data
         persistentVolumeClaim:
