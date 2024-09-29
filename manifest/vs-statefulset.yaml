@@ -18,7 +18,7 @@ spec:
       initContainers:
       - name: init-chown-data
         image: busybox
-        command: ["sh", "-c", "chown -R 1000:1000 /var/vintage_story /database"]
+        command: ["sh", "-c", "chown -R 1000:1000 /var/vintage_story", "chown -R 1000:1000 /database"]
         volumeMounts:
         - name: vs-data
           mountPath: /var/vintage_story
