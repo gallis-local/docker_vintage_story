@@ -18,6 +18,7 @@ spec:
       containers:
       - name: vintage-story-server
         image: vintage-story-server:latest  # You'll need to replace this with the actual image
+        imagePullPolicy: Always
         ports:
         - name: vs-server
           containerPort: 42420

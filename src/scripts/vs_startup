@@ -19,6 +19,7 @@ if [ ! -f $VS_SERVER_PATH/server.sh ]; then
         echo "Server downloaded. Restarting container..."
         exit 0
     fi
+
     sleep infinity & wait
 else
 
