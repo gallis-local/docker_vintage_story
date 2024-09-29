@@ -19,4 +19,4 @@ images:
     newTag: latest
   - name: vintage-story-filebrowser
     newName: core.harbor.k.gallis.cloud/dockerhub-proxy/filebrowser/filebrowser
-    newTag: latest
+    newTag: s6
