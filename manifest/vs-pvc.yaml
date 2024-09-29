@@ -9,6 +9,7 @@ spec:
     requests:
       storage: 10Gi
 ---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: vs-filebrowser-db-pvc
