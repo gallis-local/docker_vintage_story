@@ -59,9 +59,10 @@ spec:
           mountPath: /srv
         - name: vs-filebrowser-db
           mountPath: /database
-        - name: vs-filebrowser-config
-          mountPath: /config/settings.json
-          subPath: filebrowser.json
+          subPath: db
+        - name: vs-filebrowser-db
+          mountPath: /config
+          subPath: config
       volumes:
       - name: vs-data
         persistentVolumeClaim:
@@ -69,8 +70,3 @@ spec:
       - name: vs-filebrowser-db
         persistentVolumeClaim:
           claimName: vs-filebrowser-db-pvc
-      - name: vs-filebrowser-config
-        configMap:
-          name: vs-filebrowser-config
-          key: filebrowser.json
-          
