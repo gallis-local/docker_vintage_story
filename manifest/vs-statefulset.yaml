@@ -45,7 +45,7 @@ spec:
         - name: vs-data
           mountPath: /var/vintage_story
       - name: vintage-story-filebrowser
-        image: hurlenko/filebrowser:lastest
+        image: hurlenko/filebrowser:latest  
         imagePullPolicy: Always
         env:
         - name: PUID
@@ -60,7 +60,7 @@ spec:
           containerPort: 8080  
         volumeMounts:
         - name: vs-data
-          mountPath: /srv
+          mountPath: /data
         - name: vs-filebrowser-db
           mountPath: /database
           subPath: db
