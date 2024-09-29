@@ -30,7 +30,7 @@ metadata:
   name: vs-filebrowser-pub
   annotations:
     cert-manager.io/cluster-issuer: cf-gallis
-    external-dns.alpha.kubernetes.io/target: tunnel.gallis.cloud
+    external-dns.alpha.kubernetes.io/target: tunnel-west.gallis.cloud
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
 spec:
