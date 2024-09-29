@@ -7,6 +7,7 @@ resources:
   - vs-secret.yaml # This is the secret that will be used to pull the image from the private registry
   - vs-configmap.yaml
   - vs-service.yaml
+  - vs-pvc.yaml
   - vs-statefulset.yaml # This is the StatefulSet that will run the Vintage Story server, with the image pulled from the private registry
   - filebrowser-ingress.yaml # This is the Ingress that will expose the Filebrowser service 
 commonLabels:

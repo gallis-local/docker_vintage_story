@@ -47,13 +47,9 @@ spec:
         volumeMounts:
         - name: vs-data
           mountPath: /srv
-        - name: filebrowser-db
+        - name: vs-filebrowser-db
           mountPath: /database
-        - name: vs-config
-          configMap:
-            name: vs-filebrowser-config
-            items:
-            - key: filebrowser.json
+        - name: vs-filebrowser-config
           mountPath: /config/settings.json
   volumeClaimTemplates:
   - metadata:
@@ -63,10 +59,14 @@ spec:
       resources:
         requests:
           storage: 1Gi  # Adjust this value based on your needs
-  - metadata:
-      name: vs-data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 10Gi  # Adjust this value based on your needs
+  volumes:
+  - name: vs-data
+    persistentVolumeClaim:
+      claimName: vs-pvc
+  - name: vs-filebrowser-db
+    persistentVolumeClaim:
+      claimName: vs-filebrowser-db-pvc
+  - name: vs-filebrowser-config
+    configMap:
+      name: vs-filebrowser-config
+      key: filebrowser.json
