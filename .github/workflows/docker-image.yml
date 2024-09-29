@@ -29,6 +29,10 @@ jobs:
       with:
         driver-opts: network=host      
 
+    - name: Prepare Scrips
+      run:  bash ./prepare.sh
+      working-directory: ./src 
+
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
