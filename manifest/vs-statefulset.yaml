@@ -51,14 +51,6 @@ spec:
           mountPath: /database
         - name: vs-filebrowser-config
           mountPath: /config/settings.json
-  volumeClaimTemplates:
-  - metadata:
-      name: filebrowser-db
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 1Gi  # Adjust this value based on your needs
   volumes:
   - name: vs-data
     persistentVolumeClaim:
