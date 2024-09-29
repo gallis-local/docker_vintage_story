@@ -41,8 +41,13 @@ spec:
         - name: vs-data
           mountPath: /var/vintage_story
       - name: vintage-story-filebrowser
-        image: filebrowser/filebrowser:latest
+        image: filebrowser/filebrowser:s6
         imagePullPolicy: Always
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
         ports:
         - name: filebrowser
           containerPort: 80
