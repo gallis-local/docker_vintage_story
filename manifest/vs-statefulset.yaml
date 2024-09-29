@@ -18,13 +18,10 @@ spec:
       initContainers:
       - name: init-chown-data
         image: busybox
-        command: ["sh", "-c", "chown -R 1000:1000 /var/vintage_story", "chown -R 1000:1000 /database", "chown -R 1000:1000 /config"]
+        command: ["sh", "-c", "chown -R 1000:1000 /var/vintage_story", "chown -R 1000:1000 /config"]
         volumeMounts:
         - name: vs-data
           mountPath: /var/vintage_story
-        - name: vs-filebrowser-db
-          mountPath: /database
-          subPath: db
         - name: vs-filebrowser-db
           mountPath: /config
           subPath: config
@@ -61,9 +58,6 @@ spec:
         volumeMounts:
         - name: vs-data
           mountPath: /data
-        - name: vs-filebrowser-db
-          mountPath: /database
-          subPath: db
         - name: vs-filebrowser-db
           mountPath: /config
           subPath: config
