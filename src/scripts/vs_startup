@@ -6,10 +6,23 @@ cleanup() {
 }
 
 if [ ! -f $VS_SERVER_PATH/server.sh ]; then
-    echo "Server runtime is missing. Download server with use 'sudo docker exec vintage_story_server bash -c \"vs_update $VS_SERVER_DOWNLOAD_URL'\""
+    echo "Server runtime is missing. Download server with use 'sudo docker exec vintage_story_server bash -c \"vs_server_update $VS_SERVER_DOWNLOAD_URL'\""
     echo "and restart container"
 
-    sleep infinity & wait
+    #if $VS_SERVER_DOWNLOAD_URL is not set, just sleep
+
+    if [ -z "$VS_SERVER_DOWNLOAD_URL" ]; then
+        sleep infinity & wait
+    fi
+
+    #if $VS_SERVER_DOWNLOAD_URL is set, download server and restart container
+
+    if [ ! -z "$VS_SERVER_DOWNLOAD_URL" ]; then
+        echo "Downloading server files from $VS_SERVER_DOWNLOAD_URL"
+        bash vs_server_update $VS_SERVER_DOWNLOAD_URL
+        exit 0
+    fi
+
 else
 
     trap 'true' SIGTERM
