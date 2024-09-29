@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vintage-story-server
+spec:
+  selector:
+    app: vintage-story-server
+  ports:
+    - protocol: TCP
+      port: 42420
+      targetPort: 42420
+  type: LoadBalancer

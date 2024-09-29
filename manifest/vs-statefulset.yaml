@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: vintage-story-server
+spec:
+  serviceName: "vintage-story-server"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vintage-story-server
+  template:
+    metadata:
+      labels:
+        app: vintage-story-server
+    spec:
+      containers:
+      - name: vintage-story-server
+        image: vintage-story-server:latest  # You'll need to replace this with the actual image
+        ports:
+        - name: vs-server
+          containerPort: 42420
+        envFrom:
+        - configMapRef:
+            name: vs-config
+        volumeMounts:
+        - name: vs-data
+          mountPath: /var/vintage_story
+  volumeClaimTemplates:
+  - metadata:
+      name: vs-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi  # Adjust this value based on your needs
+
