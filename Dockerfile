@@ -27,7 +27,7 @@ ARG SUPERCRONIC_SHA1SUM="cd48d45c4b10f3f0bfdd3a57d054cd05ac96812b"
 USER root
 
 # Add text editors to be able to edit configs in pod
-RUN apt-get update && apt-get install nano vi -y && apt-get clean
+RUN apt-get update && apt-get install nano vim -y && apt-get clean
 
 COPY ./dist/scripts.tar.gz /tmp/scripts.tar.gz
 
