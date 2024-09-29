@@ -5,3 +5,12 @@ metadata:
 data:
   TZ: "America/Los_Angeles"
   VS_SERVER_DOWNLOAD_URL: "https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64_1.19.8.tar.gz"
+  filebrowser.json: |-
+    {
+      "port": 80,
+      "baseURL": "",
+      "address": "",
+      "log": "stdout",
+      "database": "/database/filebrowser.db",
+      "root": "/srv"
+    }

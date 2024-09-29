@@ -38,7 +38,31 @@ spec:
         volumeMounts:
         - name: vs-data
           mountPath: /var/vintage_story
+      - name: vintage-story-filebrowser
+        image: filebrowser/filebrowser:latest
+        imagePullPolicy: Always
+        ports:
+        - name: filebrowser
+          containerPort: 80
+        volumeMounts:
+        - name: vs-data
+          mountPath: /srv
+        - name: filebrowser-db
+          mountPath: /database
+        - name: vs-config
+          configMap:
+            name: vs-config
+            items:
+            - key: filebrowser.json
+          mountPath: /config/settings.json
   volumeClaimTemplates:
+  - metadata:
+      name: filebrowser-db
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 1Gi  # Adjust this value based on your needs
   - metadata:
       name: vs-data
     spec:

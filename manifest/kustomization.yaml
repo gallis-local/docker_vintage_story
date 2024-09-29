@@ -8,10 +8,14 @@ resources:
   - vs-configmap.yaml
   - vs-service.yaml
   - vs-statefulset.yaml # This is the StatefulSet that will run the Vintage Story server, with the image pulled from the private registry
+  - filebrowser-ingress.yaml # This is the Ingress that will expose the Filebrowser service 
 commonLabels:
   app: vintage-story
 # This is the image that will be pulled from the private registry
 images:
   - name: vintage-story-server
     newName: core.harbor.k.gallis.cloud/gallis/vintage_story
+    newTag: latest
+  - name: vintage-story-filebrowser
+    newName: core.harbor.k.gallis.cloud/dockerhub-proxy/filebrowser/filebrowser
     newTag: latest
