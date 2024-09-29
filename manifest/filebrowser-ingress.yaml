@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -22,3 +23,29 @@ spec:
   - hosts:
     - vs-files.w.gallis.cloud
     secretName: vs-files-w-gallis-cloud-tls
+---    
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vs-filebrowser-pub
+  annotations:
+    cert-manager.io/cluster-issuer: cf-gallis
+    external-dns.alpha.kubernetes.io/target: tunnel.gallis.cloud
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+spec:
+  rules:
+  - host: vs-files.gallis.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vintage-story-filebrowser
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - vs-files.gallis.cloud
+    secretName: vs-files-gallis-cloud-tls
