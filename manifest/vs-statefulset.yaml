@@ -13,6 +13,8 @@ spec:
       labels:
         app: vintage-story-server
     spec:
+      imagePullSecrets:
+        - name: harbor-k3s
       containers:
       - name: vintage-story-server
         image: vintage-story-server:latest  # You'll need to replace this with the actual image
