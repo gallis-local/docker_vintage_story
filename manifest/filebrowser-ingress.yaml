@@ -17,7 +17,7 @@ spec:
           service:
             name: vintage-story-filebrowser
             port:
-              number: 8080
+              number: 80
   tls:
   - hosts:
     - vs-files.w.gallis.cloud
