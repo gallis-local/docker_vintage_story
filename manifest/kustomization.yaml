@@ -18,5 +18,5 @@ images:
     newName: core.harbor.k.gallis.cloud/gallis/vintage_story
     newTag: latest
   - name: vintage-story-filebrowser
-    newName: core.harbor.k.gallis.cloud/dockerhub-proxy/filebrowser/filebrowser
-    newTag: s6
+    newName: core.harbor.k.gallis.cloud/dockerhub-proxy/hurlenko/filebrowser
+    newTag: latest

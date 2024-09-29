@@ -45,7 +45,7 @@ spec:
         - name: vs-data
           mountPath: /var/vintage_story
       - name: vintage-story-filebrowser
-        image: filebrowser/filebrowser:s6
+        image: hurlenko/filebrowser:lastest
         imagePullPolicy: Always
         env:
         - name: PUID
@@ -53,12 +53,11 @@ spec:
         - name: PGID
           value: "1000"
         securityContext:
-          allowPrivilegeEscalation: true
           runAsUser: 1000
           runAsGroup: 1000
         ports:
         - name: filebrowser
-          containerPort: 80  
+          containerPort: 8080  
         volumeMounts:
         - name: vs-data
           mountPath: /srv
