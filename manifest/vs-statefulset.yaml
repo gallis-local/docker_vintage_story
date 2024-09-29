@@ -18,10 +18,12 @@ spec:
       initContainers:
       - name: init-chown-data
         image: busybox
-        command: ["sh", "-c", "chown -R 1000:1000 /var/vintage_story"]
+        command: ["sh", "-c", "chown -R 1000:1000 /var/vintage_story /database"]
         volumeMounts:
         - name: vs-data
           mountPath: /var/vintage_story
+        - name: vs-filebrowser-db
+          mountPath: /database
       containers:
       - name: vintage-story-server
         image: vintage-story-server:latest  # You'll need to replace this with the actual image
